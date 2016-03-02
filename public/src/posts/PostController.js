@@ -21,6 +21,8 @@
 
       $scope.q = '';
 
+      $scope.not = 0;
+
       $scope.nl = false;
       $scope.stack = false;
 
@@ -46,6 +48,11 @@
           $http.get('/api/search?q='+$scope.q+'&nl='+$scope.nl+'&stack='+$scope.stack).success(function(data) {
               $scope.posts = data;
               $scope.loading = 0;
+              if(data.error == 1) {
+                  $scope.not = 1;
+              } else {
+                  $scope.not = 0;
+              }
           });
       }
 
@@ -56,6 +63,12 @@
               $scope.posts = data;
               current_page = data.info.current_page;
               $scope.loading = 0;
+
+              if(data.error == 1) {
+                  $scope.not = 1;
+              } else {
+                  $scope.not = 0;
+              }
           });
       }
 
@@ -66,6 +79,12 @@
               $scope.posts = data;
               current_page = data.info.current_page;
               $scope.loading = 0;
+
+              if(data.error == 1) {
+                  $scope.not = 1;
+              } else {
+                  $scope.not = 0;
+              }
           });
       }
 

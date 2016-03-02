@@ -34,13 +34,17 @@ function a_link($where) {
 // the limit
 function limitTo($content, $q) {
     if($q) {
-        $pos = strpos($content, $q);
+        $q = strtolower($q);
+        $l_content = strtolower($content);
+        $pos = strpos($l_content, $q);
         $a = strlen($q);
-        $rem = 160 - $a;
-        if($pos < 100) {
+        $total = $pos + $a;
+        $rem = abs($total - 160);
+
+        if($pos < 140) {
             $str = $content;
         } else {
-            $str = substr($content, 80);
+            $str = substr($content, $rem+1);
         }
     } else {
         $str = $content;

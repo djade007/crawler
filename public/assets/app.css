@@ -201,3 +201,9 @@ md-card-content {
   top: 0;
 }
 
+.empty {
+  font-size: 150%;
+  padding: 1% 0 3%;
+  color: #666;
+}
+

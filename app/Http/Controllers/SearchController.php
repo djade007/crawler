@@ -75,6 +75,6 @@ class SearchController extends Controller
 
             return ['col1' => $column1, 'col2' => $column2, 'info' => $info];
         }
-        return ['col1' => [], 'col2' => [], 'info' => $info];
+        return ['col1' => [], 'col2' => [], 'info' => $info, 'error' => 1];
     }
 }
