@@ -14,7 +14,7 @@ class SearchController extends Controller
         $nl = $request->get('nl');
         $stack = $request->get('stack');
 
-        $posts = Post::take(10)->orderBy('date', 'desc');
+        $posts = Post::orderBy('date', 'desc');
 
         $in = [];
         if($nl == 'true') {
@@ -35,8 +35,7 @@ class SearchController extends Controller
             $posts = $posts->whereNull('parent_id'); // only get the parent post
         }
 
-        $posts = $posts->get();
-
+        $posts = $posts->paginate(10);
         $data = [];
         foreach($posts as $post) {
             $data[] = [
@@ -52,6 +51,19 @@ class SearchController extends Controller
                 'author' => $post->author
             ];
         }
+        $posts = $posts->toArray();
+
+        $info = [
+            'total' => $posts['total'],
+            "per_page" => $posts['per_page'],
+            "current_page" => $posts['current_page'],
+            "last_page" => $posts['last_page'],
+            "next_page_url" => $posts['next_page_url'],
+            "prev_page_url" => $posts['prev_page_url'],
+            "from" => $posts['from'],
+            "to" => $posts['to']
+        ];
+
         $data = collect($data);
         $total = $data->count();
         // dividing into two columns
@@ -61,8 +73,8 @@ class SearchController extends Controller
 
             $column2 = $data->take($each - $total); // negative will pick from the back
 
-            return ['col1' => $column1, 'col2' => $column2];
+            return ['col1' => $column1, 'col2' => $column2, 'info' => $info];
         }
-        return ['col1' => [], 'col2' => []];
+        return ['col1' => [], 'col2' => [], 'info' => $info];
     }
 }

@@ -117,6 +117,10 @@
                 </md-card>
             </div>
         </md-content>
+        <section layout="row" layout-align="center center" layout-wrap ng-if="posts.info.total > posts.info.per_page">
+            <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == 1" ng-click="prev('l')">Previous</md-button>
+            <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == posts.info.last_page" ng-click="next('l')">Next</md-button>
+        </section>
     </md-content>
 
 </div>

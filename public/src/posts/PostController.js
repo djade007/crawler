@@ -24,6 +24,8 @@
       $scope.nl = false;
       $scope.stack = false;
 
+      var current_page = 1;
+
       $http.get('/api/search').success(function(data) {
           $scope.posts = data;
           $scope.loading = 0;
@@ -43,6 +45,26 @@
           $scope.loading = 1;
           $http.get('/api/search?q='+$scope.q+'&nl='+$scope.nl+'&stack='+$scope.stack).success(function(data) {
               $scope.posts = data;
+              $scope.loading = 0;
+          });
+      }
+
+      $scope.next = function(type) {
+          $scope.loading = 1;
+          var next = current_page + 1;
+          $http.get('/api/search?q='+$scope.q+'&nl='+$scope.nl+'&stack='+$scope.stack+'&page='+next).success(function(data) {
+              $scope.posts = data;
+              current_page = data.info.current_page;
+              $scope.loading = 0;
+          });
+      }
+
+      $scope.prev = function(type) {
+          $scope.loading = 1;
+          var prev = current_page -1;
+          $http.get('/api/search?q='+$scope.q+'&nl='+$scope.nl+'&stack='+$scope.stack+'&page='+ prev).success(function(data) {
+              $scope.posts = data;
+              current_page = data.info.current_page;
               $scope.loading = 0;
           });
       }
