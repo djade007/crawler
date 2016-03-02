@@ -36,19 +36,14 @@ function limitTo($content, $q) {
     if($q) {
         $pos = strpos($content, $q);
         $a = strlen($q);
-        $rem = 140 - $a;
+        $rem = 160 - $a;
         if($pos < 100) {
             $str = $content;
         } else {
-            $get = ceil($rem * 2/3);
-            $get = $a - $get;
-            if($get < 0) {
-                $get = 0;
-            }
-            $str = substr($content, $get);
+            $str = substr($content, 80);
         }
     } else {
         $str = $content;
     }
-    return str_limit($str, 140, '...');
+    return str_limit($str, 160, '...');
 }

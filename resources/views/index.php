@@ -142,8 +142,8 @@
         .module('Crawler', ['ngMaterial', 'posts'])
         .config(function($mdThemingProvider){
             $mdThemingProvider.theme('default')
-                .primaryPalette('brown')
-                .accentPalette('red');
+                .primaryPalette('teal')
+                .accentPalette('orange');
 
         });
 
