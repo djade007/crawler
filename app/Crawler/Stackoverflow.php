@@ -56,6 +56,14 @@ class Stackoverflow extends Base
 
             $id = preg_replace('/\D+/', '', $topic->attr('id'));
 
+            // ensure multiple bots doesn't work on a topic
+            if(Cache::has('s_'.$id)) {
+                continue;
+            } else {
+                //store
+                Cache::put('s_'.$id, 'working', 1); // cache for 1 min
+            }
+
             // check if the topic has already been processed
             $exist = $this->post->stackoverflow()->where('c_id', $id)->first();
 
