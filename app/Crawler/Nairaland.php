@@ -52,11 +52,11 @@ class Nairaland extends Base
             $id = $topic->filter('a')->attr('name');
 
             // ensure multiple bots doesn't work on a topic
-            if(Cache::has('n_'.$id)) {
+            if(\Cache::has('n_'.$id)) {
                 continue;
             } else {
                 //store
-                Cache::put('n_'.$id, 'working', 1); // cache for 1 min
+                \Cache::put('n_'.$id, 'working', 1); // cache for 1 min
             }
 
             // check if the topic has already been processed
