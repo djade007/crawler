@@ -51,12 +51,14 @@
                     </md-checkbox>
                 </div>
             </div>
-        <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
-
-        <md-content class="md-padding" layout-xs="column" layout="row">
+        <md-content flex>
+            <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
             <p ng-if="not == 1" class="empty">
                 No result found...
             </p>
+        </md-content>
+
+        <md-content class="md-padding" layout-xs="column" layout="row">
             <div flex-xs flex-gt-xs="50" layout="column">
                 <md-card ng-repeat="post in posts.col1">
                     <md-card-header>
@@ -124,10 +126,10 @@
             <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == 1" ng-click="prev('l')">Previous</md-button>
             <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == posts.info.last_page" ng-click="next('l')">Next</md-button>
         </section>
+    </md-content>
 
-        <md-content>
-            <p style="text-align: center; font-size: 85%">Developed by <a href="http://djade.net">DJADE</a></p>
-        </md-content>
+    <md-content>
+        <p style="text-align: center; font-size: 85%">Developed by <a href="http://djade.net">DJADE</a></p>
     </md-content>
 
 </div>
