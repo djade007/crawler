@@ -38,7 +38,7 @@
             <input ng-model="q" ng-change="search()">
         </md-input-container>
         </div>
-            <div layout="row" class="input">
+            <div layout="row" class="input" id="search">
                 <div flex-xs flex="50">
                     <md-checkbox ng-model="nl" aria-label="Search Nairland" ng-change="search()">
                         Nairaland
@@ -58,7 +58,7 @@
             </p>
         </md-content>
 
-        <md-content class="md-padding" layout-xs="column" layout="row">
+        <md-content class="md-padding" layout-xs="column" layout="row" id="result">
             <div flex-xs flex-gt-xs="50" layout="column">
                 <md-card ng-repeat="post in posts.col1">
                     <md-card-header>
@@ -81,7 +81,8 @@
                     <md-card-actions layout="row" layout-align="end center">
                         <ul class="tags">
                             <small>
-                                <li class="tag">VIEWS: {{ post.views }}</li>
+                                <li class="tag">{{ post.date | uppercase }}</li>
+                                <li class="tag" ng-if="post.parent == 'yes'">VIEWS: {{ post.views }}</li>
                                 <li class="tag" ng-repeat="(key, value) in post.data">
                                     {{ key | uppercase }} : {{ value }}
                                 </li>
@@ -112,7 +113,8 @@
                     <md-card-actions layout="row" layout-align="end center">
                         <ul class="tags">
                             <small>
-                                <li class="tag">VIEWS: {{ post.views }}</li>
+                                <li class="tag">{{ post.date | uppercase }}</li>
+                                <li class="tag" ng-if="post.parent == 'yes'">VIEWS: {{ post.views }}</li>
                                 <li class="tag" ng-repeat="(key, value) in post.data">
                                     {{ key | uppercase }} : {{ value }}
                                 </li>
@@ -126,10 +128,10 @@
             <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == 1" ng-click="prev('l')">Previous</md-button>
             <md-button md-no-ink class="md-primary" ng-disabled="posts.info.current_page == posts.info.last_page" ng-click="next('l')">Next</md-button>
         </section>
-    </md-content>
 
-    <md-content>
-        <p style="text-align: center; font-size: 85%">Developed by <a href="http://djade.net">DJADE</a></p>
+        <footer>
+            <p style="text-align: center; font-size: 85%">Developed by <a href="http://djade.net">DJADE</a></p>
+        </footer>
     </md-content>
 
 </div>

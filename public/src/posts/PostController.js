@@ -3,7 +3,7 @@
   angular
        .module('posts', ['ngMaterial'])
        .controller('PostController', [
-          '$scope', '$http', '$sce',
+          '$scope', '$http', '$sce', '$location', '$anchorScroll',
           PostController
        ]);
 
@@ -14,7 +14,7 @@
    * @param $sce
  * @constructor
    */
-  function PostController($scope, $http, $sce) {
+  function PostController($scope, $http, $sce, $location, $anchorScroll) {
     var self = this;
 
       $scope.loading = 1;
@@ -70,6 +70,12 @@
                   $scope.not = 0;
               }
           });
+          // set the location.hash to the id of
+          // the element you wish to scroll to.
+          $location.hash('search');
+
+          // call $anchorScroll()
+          $anchorScroll();
       }
 
       $scope.prev = function(type) {
@@ -86,6 +92,12 @@
                   $scope.not = 0;
               }
           });
+          // set the location.hash to the id of
+          // the element you wish to scroll to.
+          $location.hash('search');
+
+          // call $anchorScroll()
+          $anchorScroll();
       }
 
 

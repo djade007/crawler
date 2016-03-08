@@ -30,4 +30,8 @@ class Post extends Model
         if($type == 'nairaland') return 'programming';
         return implode(', ', $this->getAttribute('data')['tags']);
     }
+
+    public function getDatetoAttribute() {
+        return $this->getAttribute('date')->diffForHumans();
+    }
 }

@@ -47,8 +47,9 @@ class SearchController extends Controller
                 'tags' => $post->tags,
                 'views' => $post->views,
                 'type' => $post->type,
-                'date' => $post->date,
-                'author' => $post->author
+                'date' => $post->date_to,
+                'author' => $post->author,
+                'parent' => $post->parent_id == null ? 'yes' : 'no'
             ];
         }
         $posts = $posts->toArray();
