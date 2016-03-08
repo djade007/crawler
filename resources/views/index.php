@@ -144,7 +144,7 @@
 <!-- Angular Material Library -->
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
 
-<script src="./src/posts/PostController.js"></script>
+<script src="./src/posts/PostController.js?v=1"></script>
 
 
 <script type="text/javascript">
