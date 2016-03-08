@@ -6,14 +6,16 @@ This is a website crawler built with Laravel and Angularjs Material
 
 To install using composer
 
-Run composer install
+Run `composer install`
 
-Make sure storage and bootstrap/cache are writable
+Make sure `storage` and `bootstrap/cache` are writable
 
-Copy .env.example to .env
+Copy .env.example file to .env
 
-Run php artisan key:generate
+Run `php artisan key:generate`
 
 Edit .env file to set up the database credentials
+
+Run `php artisan migrate` to create the database structure
 
 Run `php artisan crawl --site=nairaland` and `php artisan crawl --site=stackoverflow` to start crawling and indexing nairaland.com and stackoverflow.com respectively
